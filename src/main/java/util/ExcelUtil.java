@@ -75,9 +75,9 @@ public class ExcelUtil {
             head.add(cellValue);
         }
 
-        while (rows.hasNext()) {
-            line = new JSONObject();
+        do {
             row = rows.next();
+            line = new JSONObject();
             // 获取单元格
             for(int i = 0;i < head.size();i++){
                 cell = row.getCell(i);
@@ -91,7 +91,7 @@ public class ExcelUtil {
             }
             res.add(line);
             System.out.println(line);
-        }
+        } while (rows.hasNext());
 
         List<T> list = new ArrayList<>();
         for (JSONObject element : res) {
